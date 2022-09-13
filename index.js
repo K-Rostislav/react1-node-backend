@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGODB_URI)
 const app = express()
 
 app.use(express.json())
-app.use(cors({ origin: 'http://localhost:3000' }))
+app.use(cors())
 
 app.get('/products', ProductController.getProducts)
 app.get('/products/:id', ProductController.getOneProduct)
