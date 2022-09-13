@@ -10,8 +10,6 @@ import * as UserController from "./controllers/UserController.js";
 import * as ProductController from "./controllers/ProductController.js";
 
 mongoose.connect(process.env.MONGODB_URI)
-.then(() => {console.log('DB OK')})
-.catch((error) => {console.log('DB error', error)})
 
 const app = express()
 
@@ -25,7 +23,4 @@ app.post('/login', UserController.login)
 app.post('/register', registerValidation, UserController.register)
 
 app.listen(process.env.PORT || 8000, (error) => {
-  if (error) return console.log(error)
-
-  console.log('Server OK')
 })
