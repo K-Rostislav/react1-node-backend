@@ -9,7 +9,7 @@ import checkAuth from "./utils/checkAuth.js";
 import * as UserController from "./controllers/UserController.js";
 import * as ProductController from "./controllers/ProductController.js";
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://user1:poipop2popkin@cluster0.kbhfg9g.mongodb.net/react1?retryWrites=true&w=majority')
 
 const app = express()
 
@@ -22,4 +22,6 @@ app.get('/me', checkAuth, UserController.getMe)
 app.post('/login', UserController.login)
 app.post('/register', registerValidation, UserController.register)
 
-app.listen(process.env.PORT || 8080)
+app.listen(process.env.PORT || 8080, () => {
+    console.log('OK')
+})
