@@ -23,5 +23,9 @@ app.post('/login', UserController.login)
 app.post('/register', registerValidation, UserController.register)
 
 app.listen(process.env.PORT || 8080, () => {
+  try {
     console.log('OK')
+  } catch (error) {
+    console.log('error', error)
+  }
 })
