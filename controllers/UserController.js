@@ -23,6 +23,33 @@ export const getMe = async (req, res) => {
   }
 }
 
+export const editData = async (req, res) => {
+  try {
+    let doc = await UserModel.findOneAndUpdate(
+      {
+        _id: req.body._id
+      },
+      {
+        name: req.body.name,
+        surename: req.body.surename,
+        patronymic: req.body.patronymic,
+        phone: req.body.phone,
+        email: req.body.email,
+      },
+      {
+        new: true
+      },
+    )
+
+   res.json(doc)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Не удалось изменить данные пользователя'
+    })
+  }
+}
+
 export const login = async (req, res) => {
   try {
     const user = await UserModel.findOne({ phone: req.body.phone })
