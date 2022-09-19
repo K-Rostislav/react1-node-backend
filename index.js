@@ -38,7 +38,7 @@ app.get('/me', checkAuth, UserController.getMe)
 app.patch('/me/edit', checkAuth, UserController.editData)
 app.post('/login', UserController.login)
 app.post('/register', registerValidation, UserController.register)
-
+app.patch('/cart', UserController.addToCart)
 app.post('/profile/upload', checkAuth, async (req, res) => {
   try {
     let doc = await UserModel.findOneAndUpdate(

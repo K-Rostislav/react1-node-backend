@@ -28,6 +28,13 @@ const UserSchema = new mongoose.Schema({
       required: true
     },
     avatarUrl: String,
+    cart: {
+      _id: String,
+      name: String,
+      image: String,
+      price: Number,
+      count: Number,
+    }
   },
   {
     timeseries: true

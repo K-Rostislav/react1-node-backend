@@ -144,3 +144,26 @@ export const register = async (req, res) => {
     })
   }
 }
+
+export const addToCart = async (req, res) => {
+  try {
+    let doc = await UserModel.findOneAndUpdate(
+      {
+        _id: req.body._id
+      },
+      {
+        cart: req.body.cartItems
+      },
+      {
+        new: true
+      },
+    )
+    
+    res.json(doc)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Не удалось добавить в корзину'
+    })
+  }
+}
