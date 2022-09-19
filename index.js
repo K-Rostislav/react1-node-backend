@@ -30,7 +30,7 @@ const app = express()
 
 app.use(express.json())
 // app.use('/uploads', express.static('uploads'))
-app.use(cors({ origin: 'http://localhost:3000' }))
+app.use(cors())
 
 app.get('/products', ProductController.getProducts)
 app.get('/products/:id', ProductController.getOneProduct)
