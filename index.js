@@ -11,7 +11,7 @@ import checkAuth from "./utils/checkAuth.js";
 import * as UserController from "./controllers/UserController.js";
 import * as ProductController from "./controllers/ProductController.js";
 
-mongoose.connect('mongodb+srv://user1:poipop2popkin@cluster0.kbhfg9g.mongodb.net/react1?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGODB || 'mongodb+srv://user1:poipop2popkin@cluster0.kbhfg9g.mongodb.net/react1?retryWrites=true&w=majority')
 .then(() => {console.log('DB OK')})
 .catch((error) => {console.log('DB error', error)})
 
@@ -75,7 +75,7 @@ app.post('/profile/upload', checkAuth, async (req, res) => {
 //   }
 // })
 
-app.listen(8000, (error) => {
+app.listen(process.env.PORT || 8000, (error) => {
   if (error) return console.log(error)
 
   console.log('Server OK')
